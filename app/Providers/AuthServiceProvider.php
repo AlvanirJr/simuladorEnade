@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace SimuladoENADE\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,10 +13,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Usuario::class=>\App\Policies\UsuarioPolicy::class,
-        \App\Aluno::class=>\App\Policies\AlunoPolicy::class,
-
-
+        'SimuladoENADE\Model' => 'SimuladoENADE\Policies\ModelPolicy',
+	\SimuladoENADE\Usuario::class=>\SimuladoENADE\Policies\UsuarioPolicy::class,
+        \SimuladoENADE\Aluno::class=>\SimuladoENADE\Policies\AlunoPolicy::class
     ];
 
     /**

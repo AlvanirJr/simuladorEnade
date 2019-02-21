@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace SimuladoENADE\Http\Middleware;
 
 use Closure;
 
@@ -14,10 +14,13 @@ class AdministradorMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {   
+      
 
         if(\Auth::guest() || \Auth::user()->tipousuario_id != 4){
+           
             return redirect("home");
+
         }
         
 

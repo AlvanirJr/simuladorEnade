@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace SimuladoENADE\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -46,6 +46,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return view('/error');
+        return parent::render($request, $exception);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,10 +8,10 @@ class Simulado extends Model
 {
     //
 	public function usuario(){
-    	return $this->hasOne('App\Usuario');
+    	return $this->hasOne('SimuladoENADE\Usuario');
     }
     public function curso(){
-    	return $this->hasOne('App\Curso');
+    	return $this->hasOne('SimuladoENADE\Curso');
     }
   
     protected $fillable = ['descricao_simulado','usuario_id','curso_id'];
@@ -19,8 +19,8 @@ class Simulado extends Model
 
     public static $rules = [
     	'descricao_simulado' => 'required|min:5',
-        'usuario_id' => 'required',
-        'curso_id' => 'required'
+//        'usuario_id' => 'required',
+//        'curso_id' => 'required'
     ];
 
     public static $messages = [
@@ -32,6 +32,6 @@ class Simulado extends Model
 
 
     public function dificuldade() {
-            return $this->belongsTo('\App\Questao', 'dificuldade');    
+            return $this->belongsTo('\SimuladoENADE\Questao', 'dificuldade');    
     }
 }

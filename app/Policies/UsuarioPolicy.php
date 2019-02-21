@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace SimuladoENADE\Policies;
 
-use \App\Usuario;
+use \SimuladoENADE\Usuario;
+use \SimuladoENADE\Aluno;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UsuarioPolicy
@@ -12,8 +13,8 @@ class UsuarioPolicy
     /**
      * Determine whether the user can view the usuario.
      *
-     * @param  \App\Usuario  $user
-     * @param  \App\Usuario  $usuario
+     * @param  \SimuladoENADE\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $usuario
      * @return mixed
      */
     public function view(Usuario $user, Usuario $usuario)
@@ -24,17 +25,46 @@ class UsuarioPolicy
     /**
      * Determine whether the user can create usuarios.
      *
-     * @param  \App\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $user
      * @return mixed
      */
     public function create(Usuario $user){
-     //   $user->can('create', \App\Usuario::class);
+     //   $user->can('create', \SimuladoENADE\Usuario::class);
         if($user->tipousuario->id === 4){
             return true;
         }else{
             return false;
         }
     }
+
+         
+    public function view_coordenador(Usuario $user){
+        if($user->tipousuario->id === 2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function view_professor(Usuario $user){
+        if($user->tipousuario->id === 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+   public function view_aluno(Usuario $user){
+        if($user->tipousuario->id === 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
     /*public function simuladoAuth(Usuario $user){
         if($user->tipousuario->id === 4){
@@ -62,8 +92,8 @@ class UsuarioPolicy
     /**
      * Determine whether the user can update the usuario.
      *
-     * @param  \App\Usuario  $user
-     * @param  \App\Usuario  $usuario
+     * @param  \SimuladoENADE\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $usuario
      * @return mixed
      */
     public function update(Usuario $user, Usuario $usuario)
@@ -82,8 +112,8 @@ class UsuarioPolicy
     /**
      * Determine whether the user can delete the usuario.
      *
-     * @param  \App\Usuario  $user
-     * @param  \App\Usuario  $usuario
+     * @param  \SimuladoENADE\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $usuario
      * @return mixed
      */
     public function delete(Usuario $user, Usuario $usuario)
@@ -94,8 +124,8 @@ class UsuarioPolicy
     /**
      * Determine whether the user can restore the usuario.
      *
-     * @param  \App\Usuario  $user
-     * @param  \App\Usuario  $usuario
+     * @param  \SimuladoENADE\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $usuario
      * @return mixed
      */
     public function restore(Usuario $user, Usuario $usuario)
@@ -106,8 +136,8 @@ class UsuarioPolicy
     /**
      * Determine whether the user can permanently delete the usuario.
      *
-     * @param  \App\Usuario  $user
-     * @param  \App\Usuario  $usuario
+     * @param  \SimuladoENADE\Usuario  $user
+     * @param  \SimuladoENADE\Usuario  $usuario
      * @return mixed
      */
     public function forceDelete(Usuario $user, Usuario $usuario)

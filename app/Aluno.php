@@ -1,26 +1,27 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Aluno extends Model
+
+class Aluno extends Authenticatable
 {
     protected $fillable = ['nome', 'email', 'password', 'cpf','curso_id'];
     protected $hidden = ['password', 'remember_token'];
     //
     public function curso(){
-    	return $this->hasOne('App\Curso');
+    	return $this->hasOne('SimuladoENADE\Curso');
     }
 
 
     public static $rules = [
     	'nome'  => 'required|',
     	'cpf' => 'required|min:14',
-    	'password' => 'required|min:8|confirmed',
+    	//'password' => 'required|min:8|confirmed',
     	'email' => 'required|email',
-    	'curso_id'  => 'required'
+    	//'curso_id'  => 'required'
     ];
 
      public static $messages = [
